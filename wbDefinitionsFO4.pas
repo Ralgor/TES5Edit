@@ -6963,7 +6963,7 @@ begin
     {16} 'Array of Variable',
     {17} 'Array of Struct'
   ]);
-
+  { DONE }
   wbScriptFlags := wbInteger('Flags', itU8, wbEnum([
     {0x00} 'Local',
     {0x01} 'Inherited',
@@ -6971,6 +6971,7 @@ begin
     {0x03} 'Inherited and Removed'
   ]));
 
+  { DONE }
   wbScriptPropertyObject := wbUnion('Object Union', wbScriptObjFormatDecider, [
     wbStructSK([1], 'Object v2', [
       wbInteger('Unused', itU16, nil, cpIgnore, False, wbNeverShow),
@@ -6984,6 +6985,7 @@ begin
     ])
   ]);
 
+  { DONE }
   wbScriptPropertyStruct :=
     wbArrayS('Struct', wbStructSK([0], 'Member', [
       wbLenString('memberName', 2),
@@ -7012,6 +7014,7 @@ begin
       ])
     ]), -1, cpNormal, False);
 
+  { DONE }
   wbScriptProperties :=
     wbArrayS('Properties', wbStructSK([0], 'Property', [
       wbLenString('propertyName', 2),
@@ -7040,6 +7043,7 @@ begin
       ])
     ]), -2, cpNormal, False, nil, nil, nil, wbCanAddScriptProperties);
 
+  { DONE }
   wbScriptEntry := wbStructSK([0], 'Script', [
     wbLenString('scriptName', 2),
     wbScriptFlags,
@@ -7135,6 +7139,7 @@ begin
       ]), -2)
   ]);
 
+  { DONE }
   wbScriptFragments := wbStruct('Script Fragments', [
     wbInteger('Unknown', itS8),
     wbScriptEntry,
@@ -7150,6 +7155,7 @@ begin
 
   {>>> http://www.uesp.net/wiki/Tes5Mod:Mod_File_Format/VMAD_Field <<<}
 
+  { DONE }
   wbVMAD := wbStruct(VMAD, 'Virtual Machine Adapter', [
     wbInteger('Version', itS16, nil, cpIgnore).SetDefaultNativeValue(6),
     wbInteger('Object Format', itS16, nil, cpIgnore).SetDefaultNativeValue(2),

@@ -5478,7 +5478,7 @@ begin
     {14} 'Array of Float',
     {15} 'Array of Bool'
   ]);
-
+  { DONE }
   wbScriptFlags := wbInteger('Flags', itU8, wbEnum([
     {0x00} 'Local',
     {0x01} 'Inherited',
@@ -5486,6 +5486,7 @@ begin
     {0x03} 'Inherited and Removed'
   ]));
 
+  { DONE }
   wbScriptPropertyObject := wbUnion('Object Union', wbScriptObjFormatDecider, [
     wbStructSK([1], 'Object v2', [
       wbInteger('Unused', itU16, nil, cpIgnore),
@@ -5499,6 +5500,7 @@ begin
     ])
   ]);
 
+  { DONE }
   wbScriptProperties :=
     wbArrayS('Properties', wbStructSK([0], 'Property', [
       wbLenString('propertyName', 2),
@@ -5524,6 +5526,7 @@ begin
       ])
     ]), -2, cpNormal, False, nil, nil, nil, wbCanAddScriptProperties);
 
+  { DONE }
   wbScriptEntry := wbStructSK([0], 'Script', [
     wbLenString('scriptName', 2),
     wbScriptFlags,
@@ -5604,6 +5607,7 @@ begin
       ]), -2)
   ]);
 
+  { DONE }
   wbScriptFragments := wbStruct('Script Fragments', [
     wbInteger('Unknown', itS8),
     wbLenString('fileName', 2),
@@ -5619,6 +5623,7 @@ begin
 
   {>>> http://www.uesp.net/wiki/Tes5Mod:Mod_File_Format/VMAD_Field <<<}
 
+  { DONE }
   wbVMAD := wbStruct(VMAD, 'Virtual Machine Adapter', [
     wbInteger('Version', itS16, nil, cpIgnore).SetDefaultNativeValue(5),
     wbInteger('Object Format', itS16, nil, cpIgnore).SetDefaultNativeValue(2),
